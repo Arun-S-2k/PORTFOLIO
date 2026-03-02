@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
   const wrap = document.querySelector('.wrap');
+
   if (wrap) {
-    wrap.classList.add('show');
+    requestAnimationFrame(() => {
+      wrap.classList.add('show');
+    });
   } else {
     console.warn('No .wrap element found');
   }
@@ -20,7 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.classList.add('active');
         const target = btn.getAttribute('data-target');
         const panels = document.querySelectorAll('.tab-panel');
-        panels.forEach(p => p.classList.toggle('active', p.id === `${target}-panel`));
+        panels.forEach(p =>
+          p.classList.toggle('active', p.id === `${target}-panel`)
+        );
       });
     });
   }
