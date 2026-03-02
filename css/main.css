@@ -1,0 +1,1794 @@
+
+/* global layout variables */
+:root {
+    --site-max-width: 1100px; /* maximum width for outer wrapper */
+    --content-width: 980px;   /* inner content lines such as subheads */
+}
+
+body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    overflow-x: hidden;
+    align-items: center;
+    gap: 20px;
+    font-family: 'inter';
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    gap: 80px;
+    margin-bottom: 120px;
+    max-width: var(--site-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px; /* ensure breathing room on small screens */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Initial state for the wrap container */
+.wrap {
+    opacity: 0;
+    transform: translateY(0); /* Ensure no initial movement */
+    visibility: hidden; /* Ensure the content doesn't affect layout initially */
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.wrap.show {
+    opacity: 1;
+    visibility: visible; /* Reveal content smoothly without shifting */
+    transform: translateY(0);
+}
+
+/* Initial state for each section */
+nav, .Name-card, .title-top, .subhead, .Primary-CTA, .social-handle {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Staggered transition effects for each section */
+.wrap.show nav {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.wrap.show .Name-card {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s; /* No delay for main card */
+}
+
+.wrap.show .title-top {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.wrap.show .subhead {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.wrap.show .Primary-CTA {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.wrap.show .social-handle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+/* Initial state for the Experience section */
+.Experience {
+    opacity: 0;
+    transition: opacity 0.3s ease-out; /* Fast fade-in */
+}
+
+/* When the experience section is triggered to show */
+.Experience.show {
+    opacity: 1;
+    transition-delay: 0.5s; /* Delay for experience section to appear after main card */
+}
+
+.education-show.show {
+    opacity: 1;
+    transition-delay: 0.5s; /* Delay for experience section to appear after main card */
+}
+
+
+
+
+
+
+
+
+nav {
+    display: none;
+    padding: 2px 0px;
+    margin-top: 16px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+}
+
+nav ul li a {
+    text-decoration: none; 
+    color: var(--Cinder, #232E35);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400; 
+    line-height: normal;
+    position: relative;
+    display: inline-block; 
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+nav ul li a:hover {
+    color: #e99d45;
+    transform: scale(1.1); 
+}
+
+nav ul {
+    list-style: none; 
+    display: flex; 
+    gap: 56px; 
+    margin: 0; 
+    padding: 0; 
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex: 1 0 0;
+    padding: 80px 0px 0px 0px;
+}
+
+.title-top {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+}
+
+
+
+.subhead {
+    text-align: center;
+    font-size: 16px; /* Default size for the paragraph */
+    color: #232E35; /* Default color */
+    line-height: 1.4;
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.highlight, .tech-experience {
+    font-weight: bold;
+    color: #232E35; /* Default color */
+    font-size: 18px; /* Larger size */
+}
+
+/* highlight designer word in title */
+.designer-highlight {
+    color: #E05409;
+}
+
+.Name-card {
+    text-align: center; 
+    margin: 48px 0; 
+}
+
+.Name-card h1 {
+    font-size: 44px; 
+    margin: 10px 0; 
+}
+
+/* constrain industries text to same content width */
+.industries-section {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    color: #232E35;
+    padding-top: 16px;
+}
+
+.industries-label {
+    font-weight: 600;
+}
+
+.industries-section .industry-item {
+    margin: 0 4px;
+}
+.Name-card h1 {
+    color: #232E35; 
+    font-family: "Plus Jakarta Sans";
+    display: inline; 
+}
+
+.Name-card h1 .dot {
+    color: #E05409;   /* Exact color you want */
+    margin-left: 2px;
+    font-weight: bold; 
+    font-family: "Plus Jakarta Sans";
+}
+
+.Name-card p {
+    color: #020a0f;
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; 
+    letter-spacing: 7.5px;
+}
+
+
+
+.Primary-CTA {
+    display: flex;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid var(--Light-2, #F1F1F1);
+    color: var(--Cinder, #232E35);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    will-change: transform;
+}
+
+.Primary-CTA:hover {
+    color: rgb(255, 255, 255); /* Change text color on hover */
+    scale: 1.02;
+    background-color: #232E35;
+    border: 2px solid var(--Light-2, #232E35);
+}
+
+.Primary-CTA:active {
+    box-shadow: 0px 0px 10px #eaeaea; /* Instant glow effect */
+    scale: 0.98;
+}
+
+
+
+
+.primary-CTA {
+    display: inline-block; /* Changed from flex to inline-block */
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid var(--Light-2, #F1F1F1);
+    color: var(--Cinder, #232E35);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    will-change: transform;
+}
+
+.primary-CTA:hover {
+    color: rgb(255, 255, 255); /* Change text color on hover */
+    transform: scale(1.02); /* Use transform instead of scale */
+    background-color: #232E35;
+    border: 2px solid var(--Light-2, #232E35);
+}
+
+.primary-CTA:active {
+    box-shadow: 0px 0px 10px #eaeaea; /* Instant glow effect */
+    transform: scale(0.98); /* Use transform for scaling */
+}
+
+
+
+
+
+.social-handle {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    opacity: 60%;
+}
+
+.social-handle img {
+    width: 28px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    transition: all 0.3s ease; /* Optional: Add smooth transition for size change */
+    opacity: 95%;
+}
+
+.social-handle a:hover img {
+    transform: scale(1.1); 
+}
+
+.social-bottom img {
+    width: 24px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    transition: all 0.3s ease; /* Optional: Add smooth transition for size change */
+}
+
+
+
+
+
+
+.approach {
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+.approach-logo-hideweb {
+    width: 1100px;
+    display: none;
+}
+
+
+
+
+
+
+
+
+.Experience-container {
+    display: flex;  /* Make it a flex container */
+    flex-direction: column; /* Arrange items vertically */
+    width: 100%;
+    max-width: 100%;
+    min-height: 640px; 
+    align-items: center;
+    padding: 40px 300px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    gap: 44px; /* Now gap will work */
+    overflow: visible;
+}
+
+.coloured-container-bg {
+    background: var(--Light-1, #FBFBFB);
+    width: 100%;
+    display: flex; /* Makes it a flex container */
+    justify-content: center; /* Centers the child container */
+    align-items: center;
+}
+
+
+.Experience {
+    display: flex;
+    width: 100%; /* Full width within the container */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 44px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 320px;
+}
+
+.title h1 {
+    font-size: 32px;
+}
+
+.title h3,
+.title p,
+.title h1 {
+    margin: 0; /* Remove extra margins */
+}
+
+.years-in-number img,
+.title img {
+    margin-left: 10px; /* Adjust the spacing between the text and images */
+}
+
+
+
+
+
+
+
+.portfolio-section {
+    text-align: center;
+    padding: 40px 300px; /* Left and right padding */
+    display: flex;
+    max-width: 1800px;
+    flex-direction: column;
+    gap: 36px;
+    width: 100%; /* Ensure it fills the container width */
+    min-height: 100%; /* Ensure it doesn't collapse vertically */
+    box-sizing: border-box; /* Include padding in width and height calculation */
+}
+
+.portfolio-section-2 {
+    display: none;
+}
+
+/* --- Sticky tabs for Work Excerpts / Case Studies (Figma-accurate) --- */
+.excerpts-section{position:relative}
+.tabs-wrapper{width:100%;display:flex;justify-content:center}
+.tabs-pill{position:sticky;top:16px;z-index:40;display:flex;align-items:center;gap:8px;padding:4px;background:rgba(1,50,126,0.05);box-shadow:inset 0 1px 4px rgba(12,12,13,0.05);border-radius:16px;height:44px}
+.tab-pill{background:transparent;border:0;padding:0 12px;height:36px;border-radius:12px;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;font-size:16px;line-height:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#81909D;font-weight:500}
+.tab-pill[data-target="excerpts"]{min-width:113px}
+.tab-pill[data-target="case"]{min-width:101px}
+.tab-pill:hover{color:#26292E;background:transparent}
+.tab-pill.active{background:#ffffff;color:#26292E;font-weight:600;box-shadow:0 1px 4px rgba(12,12,13,0.10), 0 1px 4px rgba(12,12,13,0.05)}
+
+/* Ensure sticky does not get clipped: avoid overflow rules on ancestors */
+body, .wrap { overflow-x: visible }
+
+/* optional visual separation when stuck */
+.tabs-pill.stuck{box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+
+.portfolio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Prevents extra scroll */
+}
+
+.portfolio-slider {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll; /* Allow horizontal scroll */
+    scroll-behavior: smooth;
+    width: 100%;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    cursor: grab;
+}
+
+
+
+
+.portfolio-slider::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+
+.portfolio-item {
+
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Keep text color */
+    display: block; /* Make sure it behaves like a block */
+    flex: 0 0 calc(33.33% - 20px); /* 3 items per row */
+    max-width: 348px;
+    max-height: 402px;
+    background: white;
+    border-radius: 8px 8px 0px 0px;
+    text-align: left;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+
+.portfolio-item:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+
+.item-bottom {
+
+    padding: 8px 8px 16px 16px;
+    border-radius: 0px 0px 8px 8px;
+    border-right: 1px solid var(--Light-3, #f0f0f0);
+    border-bottom: 1px solid var(--Light-3, #f0f0f0);
+    border-left: 1px solid var(--Light-3, #f0f0f0);
+    background: var(--White, #FFF);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.portfolio-item h4 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #F1F1F1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #232E35;
+    font-weight: 500;
+}
+
+.link-icon {
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+.portfolio-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-end;
+    display: none;
+}
+
+
+.nav-btn {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    border: none;
+    background: #fdf9ee;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background: rgba(213, 194, 149, 0.2);
+}
+
+.prev-btn {
+    left: 40px;
+    color: #E76F00;
+}
+
+.next-btn {
+    right: 40px;
+    color: #E76F00;
+}
+
+
+
+
+
+
+
+
+.education-alter {
+    display: flex;
+    flex-direction: row;
+    display: none;
+}
+
+
+.site-developed img {
+    width: 30px; /* Adjust the size of the ChatGPT logo */
+    height: auto; /* Maintain aspect ratio */
+    vertical-align: middle; /* Align the image with the text */
+    margin-left: 5px; /* Optional: Adds a little space between the text and the logo */
+}
+
+.site-developed {
+    min-width: 500px;
+    opacity: 80%;
+}
+
+.site-developed p {
+    padding: 0%;
+    margin-top: 8px;
+    color: #E76F00;
+}
+
+.Coding-skill {
+    align-items: center; /* Vertically align the items */
+    gap: 16px; /* Add space between images and text */
+    margin-top: 16px;
+}
+
+
+
+
+
+.other-skills .years-in-number {
+    color: var(--Cinder, #232E35);
+    font-family: "Plus Jakarta Sans";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+
+
+
+.tools {
+    display: flex;
+    gap: 10px; /* Space between individual tools */
+}
+
+.tool {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 2px solid var(--Light-2, #F1F1F1);
+    background: var(--Light-1, #FBFBFB); /* Optional */
+    line-height: 100%;
+    color: var(--Cinder-Light, #656D72);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.separator {
+    width: 100%; /* Adjust width based on parent */
+    height: 2px;
+    background-color: #F1F1F1;
+    margin: 10px 0; /* Adds spacing above and below */
+}
+
+.discription {
+    color: var(--Cinder-Light, #353738);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    margin: 0;
+}
+
+.discription p {
+    display: flex; /* Align the image and text in a row */
+    align-items: center; /* Vertically align the image and text */
+    gap: 8px; /* Space between the image and text */
+    margin: 0%
+}
+
+.discription img {
+    margin-right: 10px; /* Space between image and text */
+}
+
+
+
+.designations h2 {
+    margin-bottom: 8px; /* Space between the title and next section */
+    line-height: normal;
+}
+
+.designations p {
+    margin-bottom: 8px; /* Space between paragraphs */
+    line-height: normal;
+}
+
+.designations .discription {
+    margin-top: 8px; /* Space before the description starts */
+}
+
+.designations .discription p {
+    margin-bottom: 0px;
+}
+
+.designations .tools {
+    margin-top: 16px;
+}
+
+.designation-title {
+    display: flex;  
+    flex-direction: column;
+    gap: 8px; /* Adjust gap as needed */
+}
+
+.companies {
+    display: flex;
+    flex-direction: row; /* Stack .buttons and .designations vertically */
+    gap: 240px;
+}
+
+.companies .buttons {
+    display: flex;
+    flex-direction: column; /* Align buttons in a row */
+    gap: 12px; /* Space between buttons */
+}
+
+.companies .designations {
+    display: flex;
+    flex-direction: column; /* Align designation details in a row */
+    line-height: 2%;
+    text-align: left;
+    gap: 16px;
+    min-width: 300px;
+}
+
+
+.companies button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 16px;
+    background: var(--White, #FBFBFB);
+    border: none;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    position: relative; /* To position the arrow inside */
+    height: 52px;
+    width: 281px;
+    cursor: pointer;
+}
+
+.companies button:hover {
+    color: #E76F00;
+}
+
+.companies button.active {
+    padding-left: 16px;
+    background-color: #ffffff;
+    color: #E76F00;
+    border-bottom: 1px solid #E76F00;
+}
+
+.companies button .arrow {
+    display: none; /* Initially hide the arrow */
+    width: 24px; /* Adjust size of the arrow */
+    height: 24px;
+}
+
+.companies button.active .arrow {
+    display: inline-block;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;  /* Keeps the navbar on top */
+}
+
+.path {
+    color: var(--Cinder-Light, #656D72);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 200% */
+    letter-spacing: 7.5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.education-container {
+
+    display: flex;  /* Make it a flex container */
+    flex-direction: column; /* Arrange items vertically */
+    width: 100vw;
+    max-width: 1800px;
+    padding: 40px 300px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    gap: 44px; /* Now gap will work */
+    overflow: visible;
+}
+
+.white-container-bg {
+    width: 100%;
+    display: flex; /* Makes it a flex container */
+    flex-direction: column;
+    justify-content: center; /* Centers the child container */
+    align-items: center;
+}
+
+.education-show {
+    display: flex;
+    width: 100%;
+}
+
+
+.educations {
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    justify-content: space-between;
+    padding: 0px;
+}
+
+.college {
+    display: flex;
+    flex-direction: column;  /* Stack the elements inside the college div */
+    gap: 2px;  /* Apply space between elements inside each .college div */
+    width: 380px;
+}
+
+.college p {
+    color: var(--Cinder-Light, #656D72);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.college h4 {
+    color: var(--Cinder, green);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.college h3 {
+    color: var(--Cinder, #232E35);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.educations * {
+    margin: 0;
+    padding: 0;
+}
+
+.education-skills {
+    display: flex;
+    flex-direction: row;
+    gap: 140px;
+}
+
+.education-text p {
+    padding: 0;
+    margin: 0;
+    display: none;
+    width: 100%; /* Makes the <p> element take the full width of its parent */
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+} 
+
+.aditional-skills h3 {
+    font-weight: 400;
+}
+
+.aditional-skills h3,
+.aditional-skills p {
+
+    padding: 0;
+    margin: 0;
+}
+
+.skill-progress {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+.skill-logo {
+    width: 32px; /* Adjust logo size */
+    height: 32px;
+}
+
+.progress-container {
+    width: 400px; /* Fixed width */
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #E76F00;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+.social-bottom {
+    display: flex;
+    gap: 30px;
+    color: #656D72;
+    opacity: 75%;
+    align-items: center;
+}
+
+.footer {
+    width: 100%;
+    background-color: #FBFBFB;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.mail-id {
+    display: flex;
+    gap: 8px;
+    color: #656D72;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.mail-logo {
+    width: 22px;
+}
+
+
+
+
+
+@media screen and (max-width: 989px) and (min-width: 426px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+        gap: 80px;
+    }
+
+    nav ul {
+        gap: 30px;
+    }
+
+    .Name-card h1 {
+        font-size: 36px;
+    }
+
+    .Name-card p {
+        font-size: 14px;
+        letter-spacing: 5px;
+    }
+    nav {
+        display: none; /* Hide the navigation */
+    }
+
+    .Experience-container, .education-container, .portfolio-section {
+        padding: 40px 100px;
+    }
+
+    .companies {
+        gap: 40px;
+    }
+
+    .educations {
+        display: flex;
+        gap: 32px;
+    }
+
+    .Primary-CTA:active {
+        box-shadow: none !important; /* Removes persistent shadow */
+        transform: none !important; /* Keeps the button at its normal size after clicking */
+    }
+
+    .education-skills {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        padding: 24px;
+    }
+
+    .portfolio-section {
+        width: 100%;
+    }
+
+    .portfolio-item h4 {
+        font-size: 16px;
+    }
+
+    .progress-container {
+        width: 240px;
+    }
+
+
+
+    
+}
+
+@media screen and (max-width: 1440px) and (min-width: 988px) {
+
+    .Experience-container, .education-container, .portfolio-section {
+        padding: 40px 120px;
+    }
+
+    .companies {
+        gap: 48px;
+    }
+
+    .progress-container {
+        width: 300px;
+    }
+
+}
+
+/* ============================= */
+/* WORK EXCERPTS – UI FRAME */
+/* ============================= */
+
+.work-excerpts-grid {
+    display: flex;
+    justify-content: center;
+}
+
+/* Outer Gradient Frame */
+.ui-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 32px;
+    gap: 4px;
+
+    width: 100%;
+    max-width: 100%;
+
+    background: linear-gradient(
+        118.01deg,
+        #E8E4E9 2.3%,
+        #A8B6CA 99.97%
+    );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+
+    transition: transform 0.4s ease;
+}
+.ui-frame:hover {
+    transform: translateY(-6p1..x);
+}
+
+/* Image Wrapper */
+.ui-frame-inner {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.ui-frame-inner img {
+    width: 100%;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .ui-frame {
+        padding: 40px 20px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 425px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        gap: 32px;
+        font-family: 'Inter', sans-serif;
+        width: 100%; /* Remove fixed width, use full available width */
+        height: 100%; /* Adjust body height to be responsive */
+    }
+
+    .wrap {
+        overflow-x: hidden;
+    }
+
+    main {
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-direction: row;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .Name-card h1 {
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .Name-card p {
+        font-size: 10px;
+        letter-spacing: 4px;
+    }
+    nav {
+        display: none; /* Hide the navigation */
+    }
+
+    .title-top .desigination {
+        font-size: 28px;
+    }
+
+    .Primary-CTA:active {
+        box-shadow: none !important; /* Removes persistent shadow */
+        transform: none !important; /* Keeps the button at its normal size after clicking */
+    }
+
+
+
+
+    .approach-logo-hidemobile {
+        display: none; /* Hide web version */
+    }
+
+    .approach-logo-hideweb {
+        display: block; /* Show mobile version */
+        width: 100%; /* Adjust width if needed */
+    }
+    .approach {
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
+    
+
+
+
+    .path {
+    
+        letter-spacing: 5.5px;
+    }
+
+    
+
+
+
+
+
+
+
+    .portfolio-section {
+        padding: 20px 15px; /* Adjust padding for mobile */
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+        width: 100%; /* Ensure it fills the container */
+        max-width: 400px;
+    }
+
+    .portfolio-nav {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-end;
+        padding: 20px 20px;
+    }
+
+    .portfolio-container {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Align the items to the left */
+        position: relative;
+        width: 100%; /* Ensure it fills the container */
+        overflow: hidden; /* Prevent extra scroll */
+    }
+
+    .portfolio-slider {
+        display: flex;
+        gap: 44px; /* Reduced gap for mobile view */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        scroll-behavior: smooth;
+        width: 100%;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .portfolio-slider.dragging {
+        cursor: grabbing;
+    }
+
+    .portfolio-slider::-webkit-scrollbar {
+        display: none; /* Hide the scrollbar */
+    }
+
+    .portfolio-item {
+        flex: 0 0 calc(50% - 10px); /* 2 items per row on mobile */
+        max-width: 85%; /* Ensure each item is sized correctly */
+        transition: transform 0.3s ease;
+    }
+
+    
+
+    .portfolio-link {
+        flex: 0 0 calc(50% - 10px); /* 2 items per row on mobile */
+        max-width: 85%; /* Ensure each item is sized correctly */
+        transition: transform 0.3s ease;
+    }
+
+    .portfolio-item img {
+        border-radius: 8px 8px 0px 0px;
+        width: 175px;
+        height: auto;
+    }
+
+    .portfolio-item:hover {
+        transform: none;
+    }
+    
+    .portfolio-item h4 {
+        font-size: 16px;
+    }
+
+    .tag {
+        font-size: 12px;
+    }
+
+    .link-icon {
+        font-size: 14px;
+    }
+    
+    .portfolio-nav {
+        display: none
+    }
+
+    .progress-container {
+        width: 280px;
+    }
+
+
+
+
+
+
+
+    .site-developed {
+        min-width: 100px;
+        max-width: 300px;
+        opacity: 80%;
+    }
+
+
+
+
+
+
+
+
+    
+    .companies {
+        display: flex;
+        flex-direction: column; /* Stack .buttons and .designations vertically */
+        align-items: center; /* Center align content */
+        width: 100%; /* Make sure the container takes full width */
+        gap: 24px;
+    }
+    
+    .companies .buttons {
+        display: flex;
+        flex-direction: row; /* Align buttons horizontally */
+        justify-content: space-between; /* Distribute buttons evenly across the screen */
+        width: 100%; /* Ensure buttons take full width of the container */
+        gap: 0; /* No gap between buttons */
+        padding: 0; /* No padding */
+        align-items: center;
+    }
+    
+    .companies button {
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+    }
+
+    .companies button:active {
+        background-color: #ffffff;
+        color: #E76F00;
+        border-bottom: 1px solid #E76F00;
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+    }
+    
+    .companies button .arrow {
+        display: none !important; /* Completely remove the arrow in mobile */
+    }
+    
+    .companies .designations {
+        gap: 24px;
+        margin-top: 32px;
+    }
+
+    .designations h2 {
+        margin-bottom: 12px; /* Space between the title and next section */
+    }
+    
+    .designations p {
+        margin-bottom: 8px; /* Space between paragraphs */
+    }
+    
+    .designations .discription {
+        margin-top: 20px; /* Space before the description starts */
+    }
+    
+    .designations .discription p {
+        margin-bottom: 16px; /* Space between each description item */
+    }
+    
+    .Experience-container {
+        padding: 40px 16px;
+        gap: 24px;
+    }
+
+    .educations {
+        display: flex;
+        gap: 36px;
+    }
+
+    .education-skills {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .education-container {
+        padding: 40px 16px;
+    }
+
+    .education-text p {
+        display: none;
+        width: 100%; /* Ensures the element takes up full width of its container */
+        max-width: 370px;
+        margin: 0; /* Reset any default margins if necessary */
+    }
+
+    .college {
+        width: 100%;
+    }
+
+    .skill-progress {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .social-bottom {
+        display: flex;
+        gap: 30px;
+        color: #656D72;
+        opacity: 60%;
+        align-items: center;
+    }
+    
+    
+    .mail-id {
+        font-size: 16px;
+    }
+    
+    .mail-logo {
+        width: 22px;
+    }
+
+}
+
+/* Tabs (pill) styles + panels — Figma-accurate sizes and responsive rules */
+.tabs-wrapper { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 28px 40px; }
+.tabs-pill { display: flex; gap: 8px; background: rgba(1,50,126,0.05); padding: 4px; border-radius: 16px; box-shadow: inset 0 1px 4px rgba(12,12,13,0.05); height: 44px; align-items: center; }
+.tab-pill { background: transparent; border: none; padding: 0 12px; height: 36px; border-radius: 12px; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-weight: 500; font-size: 16px; line-height: 20px; color: #81909D; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: color 120ms ease; }
+.tab-pill[data-target="excerpts"]{min-width:113px}
+.tab-pill[data-target="case"]{min-width:101px}
+.tab-pill:hover{color:#26292E;background:transparent}
+.tab-pill.active{background:#ffffff;color:#26292E;box-shadow:0px 1px 4px rgba(12,12,13,0.10), 0px 1px 4px rgba(12,12,13,0.05)}
+.tabs-content { max-width: 1200px; width: 100%; margin-top: 18px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.work-excerpts-grid { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; }
+.excerpt-card { background: #ffffff; border-radius: 12px; min-height: 180px; box-shadow: 0 6px 18px rgba(18,30,45,0.04); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.excerpt-card.placeholder { border: 2px dashed #dfe6ea; background: linear-gradient(180deg, #fbfdff, #ffffff); }
+.placeholder-inner { color: #9aa6ad; font-family: Inter; font-weight: 600; font-size: 14px; text-align: center; padding: 18px; }
+.panel-note { color: #6b7780; padding: 18px 0; }
+
+@media (max-width: 700px) {
+    /* Keep excerpts single-column on all breakpoints to match design */
+    .work-excerpts-grid { grid-template-columns: 1fr; }
+    .tabs-wrapper { padding: 28px 20px; max-width: var(--content-width); margin: 0 auto; }
+    .tabs-pill { gap: 12px; padding: 6px; height: 40px; }
+    .tab-pill { padding: 0 10px; font-size: 14px; height: 34px; }
+}
+
+@media (max-width: 500px) {
+    .tabs-wrapper { padding: 28px 16px; max-width: var(--content-width); margin: 0 auto; }
+    .tabs-pill { gap: 8px; padding: 5px; flex-wrap: wrap; justify-content: center; }
+    .tab-pill { padding: 0 8px; font-size: 13px; height: 32px; }
+}
+
+@media (max-width: 420px) {
+    .work-excerpts-grid { grid-template-columns: 1fr; }
+    .tabs-wrapper { padding: 28px 12px; }
+    .tabs-pill { gap: 6px; padding: 4px; }
+    .tab-pill { padding: 0 8px; font-size: 11px; height: 30px; }
+}
+
+/* Education & Certification Section */
+.education-certification-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 40px;
+}
+
+.edu-cert-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.edu-cert-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 27px 32px;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+    background: #FAFAFA;
+    border-radius: 16px;
+}
+
+.edu-cert-card.cert-card {
+    flex: 1.2;
+}
+
+.edu-cert-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    width: 100%;
+}
+
+.edu-cert-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    width: 100%;
+    height: 22px;
+    margin-bottom: 16px;
+}
+
+.edu-cert-header h4 {
+    width: 100%;
+    height: 22px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -1.2px;
+    color: #1F1F1D;
+    margin: 0;
+}
+
+/* Education Items */
+.edu-cert-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 8px;
+    width: 100%;
+}
+
+.edu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 8px;
+    width: 100%;
+}
+
+.edu-item h3 {
+    width: 100%;
+    height: 24px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #2D3B44;
+    margin: 0;
+}
+
+.edu-item h4 {
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #00B300;
+    margin: 0;
+}
+
+.edu-item h4.percentage {
+    color: #00B300;
+}
+
+.edu-item p {
+    width: 100%;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #272727;
+    margin: 0;
+}
+
+.edu-item p.institution {
+    margin-bottom: 8px;
+}
+
+.year-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 17px;
+    height: 31px;
+    background: #FFFFFF;
+    border: 1px solid #D8D8D8;
+    border-radius: 100px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.2px;
+    color: #282825;
+}
+
+/* Certification Items */
+.cert-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 24px;
+    width: 100%;
+}
+
+.cert-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.cert-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #f5f5f5;
+}
+
+.cert-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cert-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 0;
+    flex: 1;
+}
+
+.cert-details h3 {
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    color: #1F1F1D;
+    margin: 0;
+}
+
+.cert-details p {
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1F1F1D;
+    margin: 0;
+}
+
+.cert-details p.cert-date {
+    color: #272727;
+    opacity: 0.6;
+}
+
+/* Responsive Design for Education & Certification Section */
+@media screen and (max-width: 1200px) {
+    .education-certification-section {
+        padding: 24px 20px;
+    }
+
+    .edu-cert-container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .education-certification-section {
+        padding: 24px 16px;
+    }
+
+    .edu-cert-container {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .edu-cert-card {
+        width: 100%;
+    }
+
+    .edu-cert-card.cert-card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .education-certification-section {
+        padding: 16px;
+    }
+
+    .edu-cert-card {
+        padding: 20px 16px;
+    }
+
+    .edu-cert-header h4 {
+        font-size: 16px;
+    }
+
+    .edu-item h3,
+    .cert-details h3 {
+        font-size: 18px;
+    }
+
+    .edu-item h4,
+    .edu-item p,
+    .cert-details p {
+        font-size: 14px;
+    }
+
+    .cert-item {
+        gap: 12px;
+    }
+
+    .cert-icon-wrapper {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+/* Responsive scale adjustments — ensure consistent sizes across breakpoints */
+@media screen and (min-width: 1441px) {
+    :root { --site-max-width: 1250px; --content-width: 1100px; }
+    .Name-card h1 { font-size: 56px; }
+    .title-top .desigination { font-size: 36px; }
+    .subhead { font-size: 18px; }
+    .tabs-wrapper { padding: 36px 48px; }
+    .tabs-pill { height: 52px; gap: 12px; }
+    .tab-pill { font-size: 18px; padding: 0 16px; height: 40px; }
+}
+
+@media screen and (min-width: 1101px) and (max-width: 1440px) {
+    :root { --site-max-width: 1150px; --content-width: 980px; }
+    .Name-card h1 { font-size: 48px; }
+    .title-top .desigination { font-size: 32px; }
+    .subhead { font-size: 17px; }
+    .tabs-wrapper { padding: 32px 40px; }
+    .tabs-pill { height: 48px; gap: 10px; }
+    .tab-pill { font-size: 17px; padding: 0 14px; height: 38px; }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1100px) {
+    .Name-card h1 { font-size: 44px; }
+    .title-top .desigination { font-size: 30px; }
+    .subhead { font-size: 16px; }
+    .tabs-wrapper { padding: 28px 28px; }
+    .tabs-pill { height: 46px; gap: 8px; }
+    .tab-pill { font-size: 16px; padding: 0 12px; height: 36px; }
+}
+
+@media screen and (max-width: 700px) {
+    /* keep existing mobile rules but ensure tab sizes scale smoothly */
+    .title-top .desigination { font-size: 28px; }
+    .subhead { font-size: 15px; }
+    .tabs-wrapper { padding: 24px 16px; }
+    .tabs-pill { height: 40px; gap: 8px; }
+    .tab-pill { font-size: 14px; padding: 0 10px; height: 34px; }
+}
+
+/* Final safeguard: ensure .subhead never exceeds content width and wraps */
+.subhead { word-break: break-word; }
