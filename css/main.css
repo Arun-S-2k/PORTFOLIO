@@ -1460,7 +1460,7 @@ nav {
 .tab-pill[data-target="case"]{min-width:101px}
 .tab-pill:hover{color:#26292E;background:transparent}
 .tab-pill.active{background:#ffffff;color:#26292E;box-shadow:0px 1px 4px rgba(12,12,13,0.10), 0px 1px 4px rgba(12,12,13,0.05)}
-.tabs-content { max-width: 1200px; width: 100%; margin-top: 24px; }
+.tabs-content { max-width: 1132px; width: 100%; margin-top: 24px; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 #case-panel { padding-top: 18px; }
@@ -1497,13 +1497,13 @@ nav {
     gap: 32px;
     text-decoration: none;
     color: #1D1B20;
-    background: #F2F2F4;
+    background: #F0F4F9;
     border-radius: 16px;
     padding: 27px 24px;
     min-height: 443px;
     width: 100%;
-    max-width: 548px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: none;
+    transition: background-color 0.2s ease;
 }
 
 .case-card-media {
@@ -1533,8 +1533,7 @@ nav {
 }
 
 .case-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(18, 30, 45, 0.08);
+    background: #E2E7EB;
 }
 
 @media (max-width: 767px) {
@@ -1587,12 +1586,12 @@ nav {
 }
 
 .edu-cert-container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch; 
-    gap: 40px;
+    gap: 36px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1132px;
     justify-content: center;
 }
 
@@ -1605,16 +1604,13 @@ nav {
     gap: 4px;
     flex: 1;
     min-width: 0;
-        background: linear-gradient(
-        118.01deg,
-        rgba(232, 228, 233, 0.1) 2.3%,
-        rgba(168, 182, 202, 0.1) 99.97%
-    ), #FAFAFA;
+    background: #F0F4F9;
     border-radius: 16px;
+    transition: none;
 }
 
 .edu-cert-card.cert-card {
-    flex: 1.2;
+    flex: 1;
 }
 
 .edu-cert-content {
@@ -1824,7 +1820,7 @@ nav {
     }
 
     .edu-cert-container {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 24px;
     }
 
