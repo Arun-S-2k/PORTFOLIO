@@ -183,8 +183,9 @@ main {
     align-content: center;
     padding: 0px;
     gap: 16px;
-    width: 980px;
-    height: 26px;
+    width: 100%;
+    max-width: var(--content-width);
+    min-height: 26px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1901,13 +1902,30 @@ nav {
 
     .edu-item h3,
     .cert-details h3 {
-        font-size: 18px;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 700;
     }
 
     .edu-item h4,
     .edu-item p,
     .cert-details p {
         font-size: 14px;
+        line-height: 20px;
+    }
+
+    /* Keep tagline on one line */
+    .tagline-container {
+        flex-wrap: nowrap;
+        gap: 4px;
+    }
+    .tagline-part1, .tagline-part3 {
+        font-size: clamp(6px, 2.4vw, 18px);
+        line-height: normal;
+    }
+    .tagline-part2 {
+        font-size: clamp(6px, 2.1vw, 16px);
+        line-height: normal;
     }
 
     .cert-item {
